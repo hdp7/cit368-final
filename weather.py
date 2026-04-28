@@ -5,6 +5,7 @@ API_KEY = "VEhpcyBpcyBhIGZha2Uga2V5LCBidXQgbWF5YmUgbG9va3MgbGlrZSBvbmU="
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 DB = None
 
+#Here are my comments
 def get_weather(city):
     params = {
         "q": city,
