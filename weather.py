@@ -1,11 +1,16 @@
 import requests
 import sqlite3
 
+#API key should be encrypted, not in plain text
 API_KEY = "VEhpcyBpcyBhIGZha2Uga2V5LCBidXQgbWF5YmUgbG9va3MgbGlrZSBvbmU="
+#URL should be stored elsewhere (ex. a secrets file)
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 DB = None
 
 def get_weather(city):
+    
+    #insert a validation function for the city here
+    
     params = {
         "q": city,
         "appid": API_KEY,
@@ -20,6 +25,7 @@ def get_weather(city):
     temp = data["main"]["temp"]
 
     #insert into DB
+    #This should be handle by another file
     c = DB.cursor()
     c.execute("INSERT INTO history (city, temp) VALUES (" + city_name +", " + temp + ")")
     DB.commit()
@@ -32,4 +38,5 @@ if __name__ == "__main__":
     
     #collect from user
     city = input("Enter city name: ")
+    #Input should be validated before being used
     get_weather(city)
